@@ -68,3 +68,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Your task is to develop an interactive, single page application where our customer can view what our model has detected.
+
+The page should look like this:
+
+![image](https://github.com/ShivankarMehta/FrontEnd-Take-Home-Exercise/assets/78727412/146ddfda-47aa-450f-a306-114a0ee7f729)
+
+
+The page should have the following functionality:
+
+1. Alerts must be displayed in the layout shown above.
+2. The user can search for alerts through three interfaces:
+    1. Free text search: When the user enters a string here, the app searches all the text in the alerts for that string. If there is a match, the alert is displayed.
+    For example, if the user enters “Unsafe”, only the unsafe driving alert should be visible.
+    If the user enters “Suresh”, only the second alert should be visible.
+    If the user enters “Driv”, both alerts should be visible as “Driv” matches both “Unsafe **driv**ing” and “Distracted **driv**er”.
+    2. Search by vehicle number: This should only search the vehicle_friendly_name field in the alerts.
+    3. Search by date range: This should show the alerts whose timestamp falls in between the two dates.
+3. The user can mark an alert as a false alarm, ie, the model’s inference is a false positive.
+
