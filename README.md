@@ -89,3 +89,4 @@ The page should have the following functionality:
     3. Search by date range: This should show the alerts whose timestamp falls in between the two dates.
 3. The user can mark an alert as a false alarm, ie, the model’s inference is a false positive.
 
+Deployment Link- https://front-end-take-home-exercise.vercel.app/
