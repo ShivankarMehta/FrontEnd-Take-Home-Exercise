@@ -44,27 +44,65 @@ function App() {
     setEndDate(event.target.value);
   };
 
-  const filterAlerts = (alerts) => {
+  // const filterAlerts = (alerts) => {
+  //   return alerts.filter((alert) => {
+  //     const alertDate = new Date(alert.timestamp);
+  //     const start = startDate ? new Date(startDate) : null;
+  //     const end = endDate ? new Date(endDate) : null;
+  //     const textMatch =
+  //       alert.alert_type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //       alert.driver_friendly_name
+  //         .toLowerCase()
+  //         .includes(searchTerm.toLowerCase()) ||
+  //       alert.vehicle_friendly_name
+  //         .toLowerCase()
+  //         .includes(searchVehicle.toLowerCase());
+  //     const startDateMatch = start ? alertDate >= start : true;
+  //     const endDateMatch = end ? alertDate <= end : true;
+
+  //     return textMatch && startDateMatch && endDateMatch;
+  //   });
+  // };
+
+  const filterByText = (alerts) => {
+    if (!searchTerm) return alerts;
+    return alerts.filter(
+      (alert) =>
+        alert.alert_type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        alert.driver_friendly_name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+    );
+  };
+
+  const filterByVehicle = (alerts) => {
+    if (!searchVehicle) return alerts;
+    return alerts.filter((alert) =>
+      alert.vehicle_friendly_name
+        .toLowerCase()
+        .includes(searchVehicle.toLowerCase())
+    );
+  };
+
+  const filterByDate = (alerts) => {
+    if (!startDate && !endDate) return alerts;
     return alerts.filter((alert) => {
       const alertDate = new Date(alert.timestamp);
       const start = startDate ? new Date(startDate) : null;
       const end = endDate ? new Date(endDate) : null;
-      const textMatch =
-        alert.alert_type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        alert.driver_friendly_name
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
-        alert.vehicle_friendly_name
-          .toLowerCase()
-          .includes(searchVehicle.toLowerCase());
-      const startDateMatch = start ? alertDate >= start : true;
-      const endDateMatch = end ? alertDate <= end : true;
-
-      return textMatch && startDateMatch && endDateMatch;
+      return (!start || alertDate >= start) && (!end || alertDate <= end);
     });
   };
 
-  const filteredAlerts = filterAlerts(alerts);
+  const filterAlerts = () => {
+    let filtered = alerts;
+    filtered = filterByText(filtered);
+    filtered = filterByVehicle(filtered);
+    filtered = filterByDate(filtered);
+    return filtered;
+  };
+
+  const filteredAlerts = filterAlerts();
 
   return (
     <div className="container">
