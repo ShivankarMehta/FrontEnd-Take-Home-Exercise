@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+body, button, input, select {
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+.search-input,
+.vehicle-input,
+.date-range-input {
+  flex: 1;
+  min-width: 160px; 
+}
+
+
+.search-input input,
+.vehicle-input input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+
+.date-range-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-range-input label {
+  font-size: 10px;
+}
+
+.date-range-input input {
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.alerttitle{
+  font-weight: 700;
+  font-size: 20px;
+  border-bottom: 1px solid #939191;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .date-range-input {
+    flex-direction: column;
+  }
+
+  .date-range-input input {
+    margin-bottom: 10px; 
+  }
+
+  .alert-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
